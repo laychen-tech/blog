@@ -12,6 +12,7 @@ try {
   await setPasswordDirect(password);
   console.log(`[reset-password] 管理密码已更新：${config.authFile}`);
   console.log('[reset-password] 所有旧会话已失效，请使用新密码登录。');
+  console.log('[reset-password] 若服务正在运行，请重启：sudo systemctl restart ai-blog-admin');
 } catch (error) {
   console.error(`[reset-password] ${error.message}`);
   process.exit(1);

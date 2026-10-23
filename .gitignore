@@ -7,8 +7,6 @@ Thumbs.db
 server/.env
 server/data/
 server/releases/
-preview-*.png
-crop-*.png
-admin-*.png
+/*.png
 *.log
 .env
