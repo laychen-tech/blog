@@ -1,0 +1,59 @@
+{{- $s := site.Data.site -}}
+{{- $type := .Type -}}
+<a class="skip-link" href="#main">跳到正文</a>
+<header class="site-header" data-header>
+  <div class="topline">
+    <div class="wrap topline-inner">
+      <span class="topline-note">AN INDEPENDENT LOG OF THE INTELLIGENCE AGE</span>
+      <div class="topline-links">
+        <span class="topline-location">{{ $s.location }}</span>
+        <a href="{{ $s.github }}" target="_blank" rel="noopener noreferrer">GITHUB {{ partial "icon.html" "arrow-up-right" }}</a>
+        <a href="mailto:{{ $s.email }}">EMAIL {{ partial "icon.html" "arrow-up-right" }}</a>
+      </div>
+    </div>
+  </div>
+  <div class="nav-bar">
+    <div class="wrap nav-inner">
+      <a class="brand" href="{{ "/" | relURL }}" aria-label="{{ $s.title }} 首页">
+        <span class="brand-sigil" aria-hidden="true">AI</span>
+        <span class="brand-text">
+          <strong>{{ $s.title }}</strong>
+          <small>{{ $s.titleEn }}</small>
+        </span>
+      </a>
+      <nav class="main-nav" aria-label="主导航">
+        <a href="{{ "/posts/" | relURL }}" class="{{ if eq $type "posts" }}is-active{{ end }}">文章</a>
+        <a href="{{ "/tags/" | relURL }}" class="{{ if eq $type "tags" }}is-active{{ end }}">标签</a>
+        <a href="{{ "/archives/" | relURL }}" class="{{ if eq $type "archives" }}is-active{{ end }}">归档</a>
+        <a href="{{ "/resume/" | relURL }}" class="{{ if eq $type "resume" }}is-active{{ end }}">简历</a>
+      </nav>
+      <div class="nav-tools">
+        <a class="icon-button nav-search" href="{{ "/search/" | relURL }}" aria-label="检索文章" title="检索">{{ partial "icon.html" "search" }}</a>
+        <a class="icon-button nav-github" href="{{ $s.github }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">{{ partial "icon.html" "github" }}</a>
+        <button class="icon-button theme-toggle" type="button" aria-label="切换深浅色" title="切换深浅色" data-theme-toggle>
+          <span class="theme-icon theme-icon-sun">{{ partial "icon.html" "sun" }}</span>
+          <span class="theme-icon theme-icon-moon">{{ partial "icon.html" "moon" }}</span>
+        </button>
+        <button class="icon-button menu-toggle" type="button" aria-label="打开菜单" aria-expanded="false" data-menu-toggle>
+          <span class="menu-icon-open">{{ partial "icon.html" "menu" }}</span>
+          <span class="menu-icon-close">{{ partial "icon.html" "close" }}</span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-nav" data-mobile-nav>
+      <div class="wrap mobile-nav-inner">
+        <a href="{{ "/posts/" | relURL }}"><span>01</span>文章</a>
+        <a href="{{ "/tags/" | relURL }}"><span>02</span>标签</a>
+        <a href="{{ "/archives/" | relURL }}"><span>03</span>归档</a>
+        <a href="{{ "/resume/" | relURL }}"><span>04</span>简历</a>
+        <a href="{{ "/search/" | relURL }}"><span>05</span>检索</a>
+        <div class="mobile-contact">
+          <a href="{{ $s.github }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="mailto:{{ $s.email }}">Email</a>
+          <span>{{ $s.location }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-line" data-scroll-line></div>
+</header>

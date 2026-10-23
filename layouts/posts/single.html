@@ -1,0 +1,129 @@
+{{ define "main" }}
+{{- $s := site.Data.site -}}
+<div class="read-progress" aria-hidden="true"><span data-read-progress></span></div>
+<article class="post-shell">
+  <header class="post-hero">
+    <div class="wrap">
+      <nav class="post-breadcrumb" aria-label="面包屑">
+        <a href="{{ "/" | relURL }}">首页</a>
+        <span>/</span>
+        <a href="{{ "/posts/" | relURL }}">文章</a>
+        <span>/</span>
+        <span>{{ .Date.Format "2006" }}</span>
+      </nav>
+      <div class="post-hero-grid">
+        <div class="post-hero-main">
+          <div class="post-kicker">
+            <span class="eyebrow">OBSERVATION / {{ .Date.Format "2006.01.02" }}</span>
+            {{ with .Params.featured }}<span class="pick-badge">EDITOR'S PICK</span>{{ end }}
+          </div>
+          <h1>{{ .Title }}</h1>
+          {{ with .Summary }}<p class="post-deck">{{ . | plainify }}</p>{{ end }}
+          <div class="post-meta">
+            <span>{{ partial "icon.html" "clock" }} {{ .ReadingTime }} 分钟阅读</span>
+            <span>{{ .WordCount }} 字</span>
+            <span>BY {{ $s.author.name }}</span>
+          </div>
+        </div>
+        <aside class="post-hero-aside">
+          <span class="mono">FILED UNDER</span>
+          <div class="post-tags">
+            {{ range .GetTerms "tags" }}<a href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>{{ end }}
+          </div>
+          <button class="copy-link" type="button" data-copy-url="{{ .Permalink }}">{{ partial "icon.html" "link" }} 复制文章链接</button>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  {{ with .Params.cover }}
+  <div class="wrap post-cover">
+    {{ $cover := . }}{{ if hasPrefix $cover "/" }}{{ $cover = $cover | relURL }}{{ end }}
+    <img src="{{ $cover }}" alt="{{ $.Title }}" loading="eager">
+  </div>
+  {{ end }}
+
+  <div class="wrap post-body-grid">
+    <div class="post-content" data-article>
+      {{ .Content }}
+    </div>
+    <aside class="post-aside">
+      {{ if in .TableOfContents "<li" }}
+      <div class="post-toc">
+        <div class="post-aside-head">
+          <span class="mono">CONTENTS</span>
+          <span class="mono">目录</span>
+        </div>
+        {{ .TableOfContents }}
+      </div>
+      {{ end }}
+      <div class="post-aside-block">
+        <span class="mono">PUBLISHED</span>
+        <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006.01.02" }}</time>
+        <span class="mono">WORDS / {{ .WordCount }}</span>
+        <span class="mono">READ / {{ .ReadingTime }} MIN</span>
+      </div>
+      <div class="post-aside-contact">
+        <span class="mono">FOLLOW THE SIGNAL</span>
+        <a href="{{ $s.github }}" target="_blank" rel="noopener noreferrer">GitHub {{ partial "icon.html" "arrow-up-right" }}</a>
+        <a href="mailto:{{ $s.email }}">Email {{ partial "icon.html" "arrow-up-right" }}</a>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="wrap post-footer">
+    <div class="post-end-mark"><span>END OF OBSERVATION</span><span class="mono">{{ .Date.Format "2006.01.02" }}</span></div>
+    <div class="post-tags post-tags-footer">
+      {{ range .GetTerms "tags" }}<a href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>{{ end }}
+    </div>
+
+    {{ partial "author-card.html" . }}
+
+    <nav class="post-nav" aria-label="上下篇">
+      {{ with .PrevInSection }}
+      <a class="post-nav-item" href="{{ .RelPermalink }}">
+        <span class="mono">← 上一篇</span>
+        <strong>{{ .Title }}</strong>
+      </a>
+      {{ else }}<span></span>{{ end }}
+      {{ with .NextInSection }}
+      <a class="post-nav-item post-nav-next" href="{{ .RelPermalink }}">
+        <span class="mono">下一篇 →</span>
+        <strong>{{ .Title }}</strong>
+      </a>
+      {{ end }}
+    </nav>
+
+    {{- $related := slice -}}
+    {{- $tags := .Params.tags -}}
+    {{- if $tags -}}
+      {{- range where site.RegularPages "Section" "posts" -}}
+        {{- if and (ne .RelPermalink $.RelPermalink) .Params.tags -}}
+          {{- if gt (len (intersect .Params.tags $tags)) 0 -}}
+            {{- $related = $related | append . -}}
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+    {{- if $related }}
+    <section class="related">
+      <div class="section-head">
+        <span class="eyebrow">RELATED SIGNALS</span>
+        <span class="mono">READ NEXT</span>
+      </div>
+      <div class="related-grid">
+        {{ range first 3 $related }}
+        <a class="related-card" href="{{ .RelPermalink }}">
+          <span class="mono">{{ .Date.Format "2006.01.02" }}</span>
+          <h3>{{ .Title }}</h3>
+          <span>{{ .ReadingTime }} MIN {{ partial "icon.html" "arrow-up-right" }}</span>
+        </a>
+        {{ end }}
+      </div>
+    </section>
+    {{ end }}
+
+    {{ partial "comments.html" . }}
+  </footer>
+</article>
+{{ end }}

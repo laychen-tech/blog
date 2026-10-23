@@ -1,0 +1,80 @@
+{
+  "title": "AI 革命",
+  "titleEn": "THE INTELLIGENCE REVOLUTION",
+  "description": "关于人工智能革命、语音交互与机器心智的长期观察笔记。",
+  "keywords": [
+    "AI 革命",
+    "人工智能",
+    "语音交互",
+    "端侧 AI",
+    "智能体"
+  ],
+  "author": {
+    "name": "陈来",
+    "nameEn": "Gavin Chen",
+    "role": "音频软件工程师 · AI 语音",
+    "bio": "十年 VoIP 与实时音频经验，关注 AI 如何重写人与机器的接口。",
+    "avatar": "/images/avatar.svg"
+  },
+  "location": "杭州 · 中国",
+  "email": "laihub@163.com",
+  "github": "https://github.com/laychen-tech",
+  "socials": [
+    {
+      "label": "GitHub",
+      "type": "github",
+      "url": "https://github.com/laychen-tech",
+      "handle": "@laychen-tech"
+    },
+    {
+      "label": "Email",
+      "type": "email",
+      "url": "mailto:laihub@163.com",
+      "handle": "laihub@163.com"
+    },
+    {
+      "label": "RSS",
+      "type": "rss",
+      "url": "/index.xml",
+      "handle": "订阅更新"
+    }
+  ],
+  "hero": {
+    "eyebrow": "FIELD NOTES ON THE INTELLIGENCE AGE",
+    "issue": "ISSUE 001",
+    "title": "AI 革命",
+    "titleEn": "THE INTELLIGENCE REVOLUTION",
+    "description": "智能正在从工具变成环境。这里记录技术浪潮的断层线、语音交互的下一站，以及人类如何与机器共同思考。",
+    "primaryCta": {
+      "label": "开始阅读",
+      "url": "/posts/"
+    },
+    "secondaryCta": {
+      "label": "作者简历",
+      "url": "/resume/"
+    },
+    "marquee": "MODEL / AGENT / VOICE / CONTEXT / ALIGNMENT / EMBODIMENT / INTELLIGENCE"
+  },
+  "home": {
+    "featuredLabel": "FEATURED OBSERVATION",
+    "latestTitle": "最新观察",
+    "latestDescription": "把噪音滤掉，留下值得追踪的信号。",
+    "topicsTitle": "正在追踪",
+    "aboutTitle": "关于观察者",
+    "aboutText": "音频工程师，长期在实时通信与机器的边界上工作。写作是为了把技术的变化放进更大的历史坐标里。"
+  },
+  "pages": {
+    "postsTitle": "全部观察",
+    "postsDescription": "按时间排列的长期观察、技术拆解与阶段性判断。",
+    "archivesTitle": "时间档案",
+    "archivesDescription": "所有观察记录，按时间归档。",
+    "searchTitle": "检索信号",
+    "searchDescription": "在全部文章、标签与正文中查找。",
+    "tagsTitle": "主题信号",
+    "tagsDescription": "按主题追踪这场正在发生的革命。"
+  },
+  "commentsEnabled": true,
+  "commentApiBase": "https://47-117-122-253.sslip.io/",
+  "footerNote": "记录，是为了在噪声中保持清醒。",
+  "icp": ""
+}

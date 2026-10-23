@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Gavin Chen signal portrait">
+  <rect width="400" height="400" fill="#0d0d0b"/>
+  <g stroke="#f4f0e6" stroke-opacity=".14">
+    <path d="M0 80h400M0 160h400M0 240h400M0 320h400"/>
+    <path d="M80 0v400M160 0v400M240 0v400M320 0v400"/>
+  </g>
+  <circle cx="288" cy="112" r="76" fill="#f14b1e"/>
+  <circle cx="288" cy="112" r="104" fill="none" stroke="#f4f0e6" stroke-opacity=".24" stroke-dasharray="2 8"/>
+  <circle cx="288" cy="112" r="132" fill="none" stroke="#f4f0e6" stroke-opacity=".12"/>
+  <path d="M32 260h58l12-48 22 112 26-166 24 132 18-74 16 44h160" fill="none" stroke="#f4f0e6" stroke-width="3"/>
+  <text x="32" y="46" fill="#f4f0e6" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="14" letter-spacing="3">GAVIN CHEN</text>
+  <text x="32" y="66" fill="#f4f0e6" fill-opacity=".48" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="9" letter-spacing="2">AUDIO / INTELLIGENCE</text>
+  <text x="32" y="360" fill="#f4f0e6" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="9" letter-spacing="2">30.2741° N / 120.1551° E</text>
+  <rect x="350" y="348" width="18" height="18" fill="#c9f24d"/>
+</svg>

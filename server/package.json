@@ -1,0 +1,22 @@
+{
+  "name": "ai-revolution-admin",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "AI 革命博客控制台：文章编辑、评论审核、站点配置与一键发布",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --env-file=.env --watch src/index.js",
+    "reset-password": "node --env-file=.env scripts/reset-password.js"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "gray-matter": "^4.0.3",
+    "markdown-it": "^14.1.0",
+    "multer": "^2.0.2"
+  }
+}

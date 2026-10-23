@@ -1,0 +1,37 @@
+{{ define "main" }}
+{{- $s := site.Data.site -}}
+<section class="page-hero search-hero">
+  <div class="wrap">
+    <div class="page-hero-top">
+      <span class="eyebrow">SIGNAL RETRIEVAL</span>
+      <span class="mono">FULL TEXT / LOCAL</span>
+    </div>
+    <div class="page-hero-grid">
+      <h1>{{ $s.pages.searchTitle }}</h1>
+      <div class="page-hero-side">
+        <p>{{ $s.pages.searchDescription }}</p>
+        <a class="text-link" href="{{ "/tags/" | relURL }}">按主题浏览 {{ partial "icon.html" "arrow-right" }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section search-section">
+  <div class="wrap">
+    <div class="search-box" data-search data-index-url="{{ "index.json" | relURL }}">
+      <label class="search-label" for="search-input">输入关键词 / QUERY</label>
+      <div class="search-input-wrap">
+        {{ partial "icon.html" "search" }}
+        <input id="search-input" type="search" placeholder="例如：语音、智能体、注意力…" autocomplete="off" spellcheck="false" data-search-input>
+        <span class="search-shortcut mono">ESC</span>
+      </div>
+      <div class="search-suggestions">
+        <span class="mono">TRY /</span>
+        {{ range first 6 site.Taxonomies.tags.ByCount }}<button type="button" data-search-suggest="{{ .Page.LinkTitle }}">#{{ .Page.LinkTitle }}</button>{{ end }}
+      </div>
+    </div>
+    <div class="search-meta" data-search-meta></div>
+    <div class="search-results" data-search-results></div>
+  </div>
+</section>
+{{ end }}

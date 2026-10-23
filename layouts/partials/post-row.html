@@ -1,0 +1,19 @@
+{{- $index := .index -}}
+{{- $post := .post -}}
+<a class="post-row" href="{{ $post.RelPermalink }}">
+  <span class="post-row-index">{{ printf "%02d" $index }}</span>
+  <span class="post-row-body">
+    <span class="post-row-meta">
+      <time datetime="{{ $post.Date.Format "2006-01-02" }}">{{ $post.Date.Format "2006.01.02" }}</time>
+      <span class="meta-divider">/</span>
+      <span>{{ $post.ReadingTime }} MIN READ</span>
+      {{ if $post.Params.featured }}<span class="row-featured">PICK</span>{{ end }}
+    </span>
+    <span class="post-row-title">{{ $post.Title }}</span>
+    <span class="post-row-summary">{{ $post.Summary | plainify | truncate 96 }}</span>
+    <span class="post-row-tags">
+      {{ range $post.GetTerms "tags" }}<span>#{{ .LinkTitle }}</span>{{ end }}
+    </span>
+  </span>
+  <span class="post-row-arrow">{{ partial "icon.html" "arrow-up-right" }}</span>
+</a>

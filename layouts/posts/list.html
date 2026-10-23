@@ -1,0 +1,53 @@
+{{ define "main" }}
+{{- $s := site.Data.site -}}
+{{- $posts := (where site.RegularPages "Section" "posts").ByDate.Reverse -}}
+<section class="page-hero">
+  <div class="wrap">
+    <div class="page-hero-top">
+      <span class="eyebrow">THE ARCHIVE / 文章</span>
+      <span class="mono">{{ printf "%02d" (len $posts) }} ENTRIES</span>
+    </div>
+    <div class="page-hero-grid">
+      <h1>{{ $s.pages.postsTitle }}</h1>
+      <div class="page-hero-side">
+        <p>{{ $s.pages.postsDescription }}</p>
+        <a class="text-link" href="{{ "/search/" | relURL }}">检索全部内容 {{ partial "icon.html" "arrow-right" }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section archive-index-section">
+  <div class="wrap">
+    <div class="index-toolbar">
+      <span class="mono">SORTED BY / DATE DESC</span>
+      <div class="index-tag-links">
+        {{ range first 5 site.Taxonomies.tags.ByCount }}
+          <a href="{{ .Page.RelPermalink }}">#{{ .Page.LinkTitle }}</a>
+        {{ end }}
+        <a href="{{ "/tags/" | relURL }}">全部主题 {{ partial "icon.html" "arrow-up-right" }}</a>
+      </div>
+    </div>
+
+    {{- $paginator := .Paginate $posts 8 -}}
+    {{- $start := mul (sub $paginator.PageNumber 1) $paginator.PageSize -}}
+    <div class="post-rows post-rows-large">
+      {{ range $i, $post := $paginator.Pages }}
+        {{ partial "post-row.html" (dict "post" $post "index" (add $start (add $i 1))) }}
+      {{ end }}
+    </div>
+
+    {{ if gt $paginator.TotalPages 1 }}
+    <nav class="pagination" aria-label="分页">
+      <div class="pagination-count">
+        <span class="mono">PAGE {{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span>
+      </div>
+      <div class="pagination-links">
+        {{ if $paginator.HasPrev }}<a href="{{ $paginator.Prev.URL }}">{{ partial "icon.html" "arrow-left" }} 较新</a>{{ end }}
+        {{ if $paginator.HasNext }}<a href="{{ $paginator.Next.URL }}">较早 {{ partial "icon.html" "arrow-right" }}</a>{{ end }}
+      </div>
+    </nav>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,49 @@
+{{ define "main" }}
+{{- $s := site.Data.site -}}
+{{- $posts := (where site.RegularPages "Section" "posts").ByDate.Reverse -}}
+<section class="page-hero">
+  <div class="wrap">
+    <div class="page-hero-top">
+      <span class="eyebrow">CHRONOLOGICAL INDEX</span>
+      <span class="mono">{{ len $posts }} ENTRIES / {{ now.Format "2006" }}</span>
+    </div>
+    <div class="page-hero-grid">
+      <h1>{{ $s.pages.archivesTitle }}</h1>
+      <div class="page-hero-side">
+        <p>{{ $s.pages.archivesDescription }}</p>
+        <a class="text-link" href="{{ "/posts/" | relURL }}">以列表查看 {{ partial "icon.html" "arrow-right" }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section archive-section">
+  <div class="wrap">
+    {{ range $posts.GroupByDate "2006" }}
+    <section class="archive-year" data-reveal>
+      <div class="archive-year-head">
+        <h2>{{ .Key }}</h2>
+        <span class="mono">{{ printf "%02d" (len .Pages) }} OBSERVATIONS</span>
+      </div>
+      {{ range .Pages.GroupByDate "01月" }}
+      <div class="archive-month">
+        <h3>{{ .Key }}</h3>
+        <div class="archive-items">
+          {{ range .Pages }}
+          <a class="archive-item" href="{{ .RelPermalink }}">
+            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "01.02" }}</time>
+            <span class="archive-item-title">{{ .Title }}</span>
+            <span class="archive-item-tags">
+              {{ range .GetTerms "tags" }}<span>#{{ .LinkTitle }}</span>{{ end }}
+            </span>
+            <span class="archive-item-arrow">{{ partial "icon.html" "arrow-up-right" }}</span>
+          </a>
+          {{ end }}
+        </div>
+      </div>
+      {{ end }}
+    </section>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,55 @@
+baseURL = "https://laychen-tech.github.io/blog/"
+languageCode = "zh-CN"
+defaultContentLanguage = "zh"
+title = "AI 革命"
+enableRobotsTXT = true
+enableRSS = true
+enableSitemap = true
+summaryLength = 110
+timeZone = "Asia/Shanghai"
+hasCJKLanguage = true
+capitalizeListTitles = false
+
+[pagination]
+  pagerSize = 8
+
+[taxonomies]
+  tag = "tags"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = false
+    [markup.goldmark.parser]
+      autoHeadingID = true
+      autoHeadingIDType = "github"
+    [markup.goldmark.extensions]
+      typographer = true
+  [markup.highlight]
+    noClasses = false
+    codeFences = true
+    lineNos = false
+    lineNumbersInTable = false
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
+    ordered = false
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  section = ["HTML", "RSS"]
+  taxonomy = ["HTML"]
+  term = ["HTML", "RSS"]
+
+[params]
+  description = "关于人工智能革命、语音交互与机器心智的长期观察笔记。"
+  author = "陈来"
+  locale = "zh_CN"
+
+[privacy]
+  [privacy.googleAnalytics]
+    disable = true
+
+[minify]
+  [minify.tdewolff.html]
+    keepWhitespace = false

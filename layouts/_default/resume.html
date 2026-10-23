@@ -1,0 +1,143 @@
+{{ define "main" }}
+{{- $s := site.Data.site -}}
+{{- $r := site.Data.resume -}}
+<section class="resume-hero">
+  <div class="wrap">
+    <div class="resume-hero-top">
+      <span class="eyebrow">CURRICULUM VITAE / 作者简历</span>
+      <span class="mono">UPDATED {{ now.Format "2006.01.02" }}</span>
+    </div>
+    <div class="resume-hero-grid">
+      <div class="resume-identity">
+        <span class="resume-status"><span class="live-dot"></span>{{ $r.status }}</span>
+        <h1>{{ $r.name }}<span class="resume-dot">.</span></h1>
+        <p class="resume-name-en">{{ $r.nameEn }}</p>
+        <h2>{{ $r.title }}</h2>
+        <p class="resume-summary">{{ $r.summary }}</p>
+        <div class="resume-actions">
+          <a class="btn btn-solid" href="mailto:{{ $r.email }}">联系我 {{ partial "icon.html" "arrow-up-right" }}</a>
+          <a class="btn btn-ghost" href="{{ $r.github }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <button class="btn btn-ghost" type="button" data-print>{{ partial "icon.html" "printer" }} 打印 / PDF</button>
+        </div>
+      </div>
+      <div class="resume-card">
+        <img src="{{ $s.author.avatar | relURL }}" alt="{{ $r.name }}" width="120" height="120" loading="eager">
+        <div class="resume-card-rows">
+          <div><span class="mono">LOCATION</span><span>{{ $r.location }}</span></div>
+          <div><span class="mono">EMAIL</span><a href="mailto:{{ $r.email }}">{{ $r.email }}</a></div>
+          <div><span class="mono">GITHUB</span><a href="{{ $r.github }}" target="_blank" rel="noopener noreferrer">{{ $r.github | replaceRE "^https?://" "" }}</a></div>
+          {{ with $r.website }}<div><span class="mono">WEBSITE</span><a href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ . | replaceRE "^https?://" "" }}</a></div>{{ end }}
+        </div>
+        <div class="resume-card-code">30°16′N / 120°09′E<br>HANGZHOU / CN</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee marquee-light" aria-hidden="true">
+  <div class="marquee-track">
+    <span>{{ $r.title }} / {{ $r.nameEn }} / {{ $r.location }} / {{ $r.title }}</span>
+    <span>{{ $r.title }} / {{ $r.nameEn }} / {{ $r.location }} / {{ $r.title }}</span>
+  </div>
+</div>
+
+{{ with $r.highlights }}
+<section class="resume-highlights">
+  <div class="wrap resume-highlight-grid">
+    {{ range . }}
+    <div class="resume-highlight" data-reveal>
+      <strong>{{ .value }}</strong>
+      <span>{{ .label }}</span>
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+
+<section class="section resume-section">
+  <div class="wrap resume-layout">
+    <aside class="resume-aside">
+      <span class="mono">INDEX</span>
+      <a href="#profile">01 / 简介</a>
+      <a href="#experience">02 / 经历</a>
+      <a href="#skills">03 / 能力</a>
+      {{ if $r.education }}<a href="#education">04 / 教育</a>{{ end }}
+      <a href="#contact">↳ 联系</a>
+    </aside>
+    <div class="resume-main">
+      <section class="resume-block" id="profile" data-reveal>
+        <div class="resume-block-head"><span class="mono">01</span><h2>简介</h2></div>
+        <p class="resume-lead">{{ $r.summary }}</p>
+        {{ with $r.now }}
+        <div class="resume-now">
+          <span class="mono">NOW / 最近在做</span>
+          <ul>{{ range . }}<li>{{ . }}</li>{{ end }}</ul>
+        </div>
+        {{ end }}
+      </section>
+
+      {{ with $r.experience }}
+      <section class="resume-block" id="experience" data-reveal>
+        <div class="resume-block-head"><span class="mono">02</span><h2>工作经历</h2></div>
+        <div class="timeline">
+          {{ range . }}
+          <article class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-period mono">{{ .period }}</div>
+            <div class="timeline-body">
+              <h3>{{ .role }}</h3>
+              <p class="timeline-company">{{ .company }}{{ with .location }} <span>/ {{ . }}</span>{{ end }}</p>
+              <ul>{{ range .points }}<li>{{ . }}</li>{{ end }}</ul>
+            </div>
+          </article>
+          {{ end }}
+        </div>
+      </section>
+      {{ end }}
+
+      {{ with $r.skills }}
+      <section class="resume-block" id="skills" data-reveal>
+        <div class="resume-block-head"><span class="mono">03</span><h2>能力矩阵</h2></div>
+        <div class="skill-grid">
+          {{ range . }}
+          <div class="skill-group">
+            <h3>{{ .group }}</h3>
+            <ul>{{ range .items }}<li>{{ . }}</li>{{ end }}</ul>
+          </div>
+          {{ end }}
+        </div>
+      </section>
+      {{ end }}
+
+      {{ with $r.education }}
+      <section class="resume-block" id="education" data-reveal>
+        <div class="resume-block-head"><span class="mono">04</span><h2>教育</h2></div>
+        <div class="timeline">
+          {{ range . }}
+          <article class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-period mono">{{ .period }}</div>
+            <div class="timeline-body">
+              <h3>{{ .school }}</h3>
+              <p class="timeline-company">{{ .degree }} <span>/ {{ .major }}</span></p>
+              {{ with .points }}<ul>{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
+            </div>
+          </article>
+          {{ end }}
+        </div>
+      </section>
+      {{ end }}
+
+      <section class="resume-block resume-contact-block" id="contact" data-reveal>
+        <div class="resume-block-head"><span class="mono">↳</span><h2>保持联系</h2></div>
+        <p>如果你也在思考实时音频、AI 语音或人与机器的接口，欢迎写信。</p>
+        <div class="resume-contact-links">
+          <a href="mailto:{{ $r.email }}">{{ $r.email }} {{ partial "icon.html" "arrow-up-right" }}</a>
+          <a href="{{ $r.github }}" target="_blank" rel="noopener noreferrer">GitHub {{ partial "icon.html" "arrow-up-right" }}</a>
+          {{ range $r.languages }}<span>{{ .name }} · {{ .level }}</span>{{ end }}
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+{{ end }}

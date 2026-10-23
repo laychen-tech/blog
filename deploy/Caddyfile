@@ -1,0 +1,17 @@
+47-117-122-253.sslip.io {
+	encode zstd gzip
+	reverse_proxy 127.0.0.1:8787
+
+	header {
+		-Server
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+	}
+
+	log {
+		output file /var/log/caddy/ai-blog-admin.log {
+			roll_size 10mb
+			roll_keep 5
+		}
+		format console
+	}
+}

@@ -1,0 +1,20 @@
+{{- $variant := .variant | default 1 -}}
+{{- $index := .index | default "01" -}}
+{{- $meta := .meta | default "N 30°16′ / E 120°09′" -}}
+{{- $word := .word | default "INTELLIGENCE" -}}
+<div class="gen-cover gen-cover-{{ $variant }}" aria-hidden="true">
+  <div class="gen-cover-grid"></div>
+  <svg class="gen-cover-orbit" viewBox="0 0 600 600" fill="none">
+    <circle cx="300" cy="300" r="230" stroke="currentColor" stroke-opacity=".28"/>
+    <circle cx="300" cy="300" r="158" stroke="currentColor" stroke-opacity=".4" stroke-dasharray="2 8"/>
+    <ellipse cx="300" cy="300" rx="270" ry="108" stroke="currentColor" stroke-opacity=".5" transform="rotate(-28 300 300)"/>
+    <ellipse cx="300" cy="300" rx="270" ry="108" stroke="currentColor" stroke-opacity=".28" transform="rotate(32 300 300)"/>
+    <circle cx="493" cy="177" r="7" fill="currentColor"/>
+    <circle cx="121" cy="388" r="4" fill="currentColor"/>
+    <circle cx="380" cy="482" r="5" fill="currentColor"/>
+  </svg>
+  <span class="gen-cover-index">{{ $index }}</span>
+  <span class="gen-cover-meta">{{ $meta }}</span>
+  <span class="gen-cover-word">{{ $word }}</span>
+  <span class="gen-cover-caption">INTELLIGENCE IS A LANDSCAPE / 2026</span>
+</div>

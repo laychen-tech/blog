@@ -1,0 +1,112 @@
+{
+  "name": "陈来",
+  "nameEn": "Gavin Chen",
+  "title": "音频软件工程师 · AI 语音系统",
+  "location": "杭州，中国",
+  "email": "laihub@163.com",
+  "github": "https://github.com/laychen-tech",
+  "website": "",
+  "status": "开放技术交流与合作",
+  "summary": "十年 VoIP 与实时音频研发经验。做过桌面端底层音频，也在把音频能力带进多平台会议终端。现在关注语音大模型、全双工对话与端侧智能如何重新定义人与机器的接口。",
+  "highlights": [
+    {
+      "value": "10+",
+      "label": "年实时音频研发"
+    },
+    {
+      "value": "04",
+      "label": "平台音频栈经验"
+    },
+    {
+      "value": "∞",
+      "label": "持续追踪的 AI 革命"
+    }
+  ],
+  "experience": [
+    {
+      "period": "现在",
+      "company": "ChromiumOS 会议终端",
+      "role": "音频软件工程师",
+      "location": "杭州",
+      "points": [
+        "负责会议终端的实时音频链路与多平台音频设备适配。",
+        "在资源受限的终端上探索更低延迟的采集、处理与播放路径。"
+      ]
+    },
+    {
+      "period": "此前",
+      "company": "ZOOM（软视视频）",
+      "role": "底层音频工程师",
+      "location": "杭州",
+      "points": [
+        "参与桌面客户端底层音频模块研发，处理采集、渲染与设备兼容性问题。",
+        "与算法和平台团队协作，优化实时通信中的音频体验。"
+      ]
+    },
+    {
+      "period": "早期",
+      "company": "VoIP 通信平台",
+      "role": "音频研发工程师",
+      "location": "",
+      "points": [
+        "从零参与 VoIP 音频链路建设，覆盖编解码、回声消除与网络自适应。"
+      ]
+    }
+  ],
+  "education": [],
+  "skills": [
+    {
+      "group": "实时音频",
+      "items": [
+        "WebRTC",
+        "AEC / ANS / AGC",
+        "Opus",
+        "抖动缓冲",
+        "设备时钟"
+      ]
+    },
+    {
+      "group": "平台",
+      "items": [
+        "Windows WASAPI",
+        "macOS CoreAudio",
+        "Linux ALSA / PulseAudio",
+        "Android Audio",
+        "ChromiumOS"
+      ]
+    },
+    {
+      "group": "AI 语音",
+      "items": [
+        "VAD / ASR / TTS 流水线",
+        "全双工对话",
+        "端侧推理"
+      ]
+    },
+    {
+      "group": "工程",
+      "items": [
+        "C / C++",
+        "Python",
+        "Node.js",
+        "Docker",
+        "Linux"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "name": "中文",
+      "level": "母语"
+    },
+    {
+      "name": "English",
+      "level": "工作语言"
+    }
+  ],
+  "now": [
+    "研究端侧语音模型与全双工对话",
+    "把 AI 语音链路拆到帧与毫秒",
+    "记录这场智能革命的结构性变化"
+  ]
+}

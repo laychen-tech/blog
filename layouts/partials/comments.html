@@ -1,0 +1,49 @@
+{{- $s := site.Data.site -}}
+{{- if $s.commentsEnabled -}}
+<section class="comments" id="comments" data-comments data-post="{{ .File.ContentBaseName }}" data-api-base="{{ $s.commentApiBase }}">
+  <div class="comments-head">
+    <div>
+      <span class="eyebrow">TRANSMISSION LOG</span>
+      <h2>评论<span class="comments-count" data-comments-count></span></h2>
+    </div>
+    <p>所有评论经人工审核后显示。留下一个可以继续对话的想法。</p>
+  </div>
+
+  <div class="comments-list" data-comments-list aria-live="polite">
+    <div class="comment-empty">正在接收信号…</div>
+  </div>
+
+  <form class="comment-form" data-comment-form novalidate>
+    <div class="comment-form-title">
+      <span class="mono">LEAVE A TRANSMISSION</span>
+      <span class="mono">REVIEW REQUIRED</span>
+    </div>
+    <div class="comment-fields">
+      <label>
+        <span>称呼 <b>*</b></span>
+        <input type="text" name="author" maxlength="40" required autocomplete="name" placeholder="你的名字">
+      </label>
+      <label>
+        <span>邮箱 <i>不会公开</i></span>
+        <input type="email" name="email" maxlength="120" autocomplete="email" placeholder="you@example.com">
+      </label>
+      <label class="field-full">
+        <span>网站 <i>可选</i></span>
+        <input type="url" name="website" maxlength="200" autocomplete="url" placeholder="https://">
+      </label>
+      <label class="field-full">
+        <span>内容 <b>*</b></span>
+        <textarea name="content" rows="5" maxlength="2000" required placeholder="写下你的观察…"></textarea>
+      </label>
+      <label class="comment-honeypot" aria-hidden="true">
+        <span>请勿填写</span>
+        <input type="text" name="website_url" tabindex="-1" autocomplete="off">
+      </label>
+    </div>
+    <div class="comment-form-foot">
+      <p class="comment-form-status" data-comment-status role="status"></p>
+      <button type="submit" class="btn btn-solid">发送评论 {{ partial "icon.html" "arrow-up-right" }}</button>
+    </div>
+  </form>
+</section>
+{{- end -}}

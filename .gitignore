@@ -1,0 +1,14 @@
+/public/
+/resources/
+node_modules/
+.hugo_build.lock
+.DS_Store
+Thumbs.db
+server/.env
+server/data/
+server/releases/
+preview-*.png
+crop-*.png
+admin-*.png
+*.log
+.env

@@ -1,0 +1,16 @@
+{{- $s := site.Data.site -}}
+<div class="author-card">
+  <div class="author-card-avatar">
+    <img src="{{ $s.author.avatar | relURL }}" alt="{{ $s.author.name }}" width="96" height="96" loading="lazy">
+  </div>
+  <div class="author-card-body">
+    <span class="eyebrow">WRITTEN BY / 作者</span>
+    <h3>{{ $s.author.name }} <small>{{ $s.author.nameEn }}</small></h3>
+    <p>{{ $s.author.bio }}</p>
+    <div class="author-card-links">
+      <a href="{{ "/resume/" | relURL }}">完整简历 {{ partial "icon.html" "arrow-up-right" }}</a>
+      <a href="{{ $s.github }}" target="_blank" rel="noopener noreferrer">GitHub {{ partial "icon.html" "arrow-up-right" }}</a>
+      <a href="mailto:{{ $s.email }}">Email {{ partial "icon.html" "arrow-up-right" }}</a>
+    </div>
+  </div>
+</div>
