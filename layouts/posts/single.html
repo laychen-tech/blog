@@ -5,9 +5,9 @@
   <header class="post-hero">
     <div class="wrap">
       <nav class="post-breadcrumb" aria-label="面包屑">
-        <a href="{{ "/" | relURL }}">首页</a>
+        <a href="{{ "" | relURL }}">首页</a>
         <span>/</span>
-        <a href="{{ "/posts/" | relURL }}">文章</a>
+        <a href="{{ "posts/" | relURL }}">文章</a>
         <span>/</span>
         <span>{{ .Date.Format "2006" }}</span>
       </nav>
@@ -38,7 +38,7 @@
 
   {{ with .Params.cover }}
   <div class="wrap post-cover">
-    {{ $cover := . }}{{ if hasPrefix $cover "/" }}{{ $cover = $cover | relURL }}{{ end }}
+    {{ $cover := partial "internal-url.html" . }}
     <img src="{{ $cover }}" alt="{{ $.Title }}" loading="eager">
   </div>
   {{ end }}

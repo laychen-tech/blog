@@ -10,16 +10,15 @@
       <div class="footer-links">
         <div class="footer-col">
           <span class="footer-label">INDEX</span>
-          <a href="{{ "/posts/" | relURL }}">全部文章</a>
-          <a href="{{ "/tags/" | relURL }}">标签索引</a>
-          <a href="{{ "/archives/" | relURL }}">时间档案</a>
-          <a href="{{ "/resume/" | relURL }}">作者简历</a>
+          <a href="{{ "posts/" | relURL }}">全部文章</a>
+          <a href="{{ "tags/" | relURL }}">标签索引</a>
+          <a href="{{ "archives/" | relURL }}">时间档案</a>
+          <a href="{{ "resume/" | relURL }}">作者简历</a>
         </div>
         <div class="footer-col">
           <span class="footer-label">CONNECT</span>
           {{ range $s.socials }}
-            {{ $url := .url }}
-            {{ if hasPrefix $url "/" }}{{ $url = $url | relURL }}{{ end }}
+            {{ $url := partial "internal-url.html" .url }}
             <a href="{{ $url }}"{{ if not (hasPrefix $url "mailto:") }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ .label }}</a>
           {{ end }}
           <a href="{{ "index.xml" | relURL }}">RSS Feed</a>
@@ -37,6 +36,6 @@
       <span class="footer-mono">BUILT WITH HUGO · DESIGNED FOR THE INTELLIGENCE AGE</span>
       {{ with $s.icp }}<a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">{{ . }}</a>{{ end }}
     </div>
-    <a class="footer-mark" href="{{ "/" | relURL }}" aria-label="回到首页">{{ $s.titleEn }} <span>↗</span></a>
+    <a class="footer-mark" href="{{ "" | relURL }}" aria-label="回到首页">{{ $s.titleEn }} <span>↗</span></a>
   </div>
 </footer>

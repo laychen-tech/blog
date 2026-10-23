@@ -4,7 +4,7 @@
 <section class="page-hero term-hero">
   <div class="wrap">
     <div class="page-hero-top">
-      <a class="back-link" href="{{ "/tags/" | relURL }}">← 所有标签</a>
+      <a class="back-link" href="{{ "tags/" | relURL }}">← 所有标签</a>
       <span class="mono">{{ len .Pages }} OBSERVATIONS</span>
     </div>
     <div class="page-hero-grid">
@@ -24,8 +24,8 @@
       {{ end }}
     </div>
     <div class="tag-page-footer">
-      <a class="btn btn-ghost" href="{{ "/tags/" | relURL }}">{{ partial "icon.html" "arrow-left" }} 返回标签索引</a>
-      <a class="btn btn-solid" href="{{ "/search/" | relURL }}">检索全部内容 {{ partial "icon.html" "arrow-right" }}</a>
+      <a class="btn btn-ghost" href="{{ "tags/" | relURL }}">{{ partial "icon.html" "arrow-left" }} 返回标签索引</a>
+      <a class="btn btn-solid" href="{{ "search/" | relURL }}">检索全部内容 {{ partial "icon.html" "arrow-right" }}</a>
     </div>
   </div>
 </section>

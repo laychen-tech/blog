@@ -21,7 +21,7 @@
         </div>
       </div>
       <div class="resume-card">
-        <img src="{{ $s.author.avatar | relURL }}" alt="{{ $r.name }}" width="120" height="120" loading="eager">
+        <img src="{{ partial "internal-url.html" $s.author.avatar }}" alt="{{ $r.name }}" width="120" height="120" loading="eager">
         <div class="resume-card-rows">
           <div><span class="mono">LOCATION</span><span>{{ $r.location }}</span></div>
           <div><span class="mono">EMAIL</span><a href="mailto:{{ $r.email }}">{{ $r.email }}</a></div>

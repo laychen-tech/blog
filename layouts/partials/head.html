@@ -15,7 +15,7 @@
 {{- end -}}
 {{- $ogType := cond .IsPage "article" "website" -}}
 {{- $ogImage := $s.author.avatar -}}
-{{- if hasPrefix $ogImage "/" -}}{{- $ogImage = $ogImage | absURL -}}{{- end -}}
+{{- if hasPrefix $ogImage "/" -}}{{- $ogImage = strings.TrimPrefix "/" $ogImage | absURL -}}{{- end -}}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ $pageTitle }}</title>
@@ -27,7 +27,7 @@
 <meta name="theme-color" content="#f4f0e6" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0d0d0c" media="(prefers-color-scheme: dark)">
 <link rel="canonical" href="{{ .Permalink }}">
-<link rel="icon" href="{{ "/favicon.svg" | relURL }}" type="image/svg+xml">
+<link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
 <link rel="alternate" type="application/rss+xml" title="{{ $s.title }} · RSS" href="{{ "index.xml" | relURL }}">
 {{- with .OutputFormats.Get "rss" }}{{ if ne .RelPermalink ("index.xml" | relURL) }}
 <link rel="alternate" type="application/rss+xml" title="{{ $pageTitle }}" href="{{ .RelPermalink }}">

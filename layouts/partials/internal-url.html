@@ -1,0 +1,5 @@
+{{- $url := . | default "" -}}
+{{- if hasPrefix $url "/" -}}
+  {{- $url = strings.TrimPrefix "/" $url -}}
+{{- end -}}
+{{- $url | relURL -}}

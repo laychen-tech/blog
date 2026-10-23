@@ -40,11 +40,11 @@
       <div class="hero-aside">
         <p class="hero-desc">{{ $s.hero.description }}</p>
         <div class="hero-actions">
-          <a class="btn btn-solid" href="{{ $s.hero.primaryCta.url | relURL }}">{{ $s.hero.primaryCta.label }} {{ partial "icon.html" "arrow-right" }}</a>
-          <a class="btn btn-ghost" href="{{ $s.hero.secondaryCta.url | relURL }}">{{ $s.hero.secondaryCta.label }}</a>
+          <a class="btn btn-solid" href="{{ partial "internal-url.html" $s.hero.primaryCta.url }}">{{ $s.hero.primaryCta.label }} {{ partial "icon.html" "arrow-right" }}</a>
+          <a class="btn btn-ghost" href="{{ partial "internal-url.html" $s.hero.secondaryCta.url }}">{{ $s.hero.secondaryCta.label }}</a>
         </div>
         <div class="hero-author">
-          <img src="{{ $s.author.avatar | relURL }}" alt="" width="44" height="44" loading="eager">
+          <img src="{{ partial "internal-url.html" $s.author.avatar }}" alt="" width="44" height="44" loading="eager">
           <div>
             <strong>{{ $s.author.name }}</strong>
             <span>{{ $s.author.role }}</span>
@@ -88,7 +88,7 @@
     <article class="feature">
       <a class="feature-visual" href="{{ .RelPermalink }}" aria-label="{{ .Title }}">
         {{ if .Params.cover }}
-          {{ $cover := .Params.cover }}{{ if hasPrefix $cover "/" }}{{ $cover = $cover | relURL }}{{ end }}
+          {{ $cover := partial "internal-url.html" .Params.cover }}
           <img class="feature-cover-img" src="{{ $cover }}" alt="{{ .Title }}" loading="lazy">
         {{ else }}
           {{ partial "generative-cover.html" (dict "variant" 1 "index" "01" "meta" "INTELLIGENCE / SIGNAL 001" "word" "A NEW LANDSCAPE") }}
@@ -117,7 +117,7 @@
           <span class="eyebrow">LATEST OBSERVATIONS</span>
           <h2 class="section-title">{{ $s.home.latestTitle }}</h2>
         </div>
-        <a class="text-link" href="{{ "/posts/" | relURL }}">全部文章 {{ partial "icon.html" "arrow-right" }}</a>
+        <a class="text-link" href="{{ "posts/" | relURL }}">全部文章 {{ partial "icon.html" "arrow-right" }}</a>
       </div>
       <p class="section-intro">{{ $s.home.latestDescription }}</p>
       <div class="post-rows">
@@ -140,7 +140,7 @@
             </a>
           {{ end }}
         </div>
-        <a class="side-more" href="{{ "/tags/" | relURL }}">主题索引 {{ partial "icon.html" "arrow-up-right" }}</a>
+        <a class="side-more" href="{{ "tags/" | relURL }}">主题索引 {{ partial "icon.html" "arrow-up-right" }}</a>
       </div>
 
       <div class="side-block now-block">
@@ -160,7 +160,7 @@
 <section class="section about-band">
   <div class="wrap about-grid">
     <div class="about-visual">
-      <img src="{{ $s.author.avatar | relURL }}" alt="{{ $s.author.name }}" width="220" height="220" loading="lazy">
+      <img src="{{ partial "internal-url.html" $s.author.avatar }}" alt="{{ $s.author.name }}" width="220" height="220" loading="lazy">
       <span class="about-coord">30.2741° N / 120.1551° E</span>
     </div>
     <div class="about-copy">
@@ -173,7 +173,7 @@
         {{ end }}
       </div>
       <div class="about-actions">
-        <a class="btn btn-light" href="{{ "/resume/" | relURL }}">查看完整简历 {{ partial "icon.html" "arrow-right" }}</a>
+        <a class="btn btn-light" href="{{ "resume/" | relURL }}">查看完整简历 {{ partial "icon.html" "arrow-right" }}</a>
         <a class="btn btn-line-light" href="mailto:{{ $s.email }}">发邮件</a>
       </div>
     </div>

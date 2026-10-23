@@ -11,7 +11,7 @@
       <h1>{{ $s.pages.postsTitle }}</h1>
       <div class="page-hero-side">
         <p>{{ $s.pages.postsDescription }}</p>
-        <a class="text-link" href="{{ "/search/" | relURL }}">检索全部内容 {{ partial "icon.html" "arrow-right" }}</a>
+        <a class="text-link" href="{{ "search/" | relURL }}">检索全部内容 {{ partial "icon.html" "arrow-right" }}</a>
       </div>
     </div>
   </div>
@@ -25,7 +25,7 @@
         {{ range first 5 site.Taxonomies.tags.ByCount }}
           <a href="{{ .Page.RelPermalink }}">#{{ .Page.LinkTitle }}</a>
         {{ end }}
-        <a href="{{ "/tags/" | relURL }}">全部主题 {{ partial "icon.html" "arrow-up-right" }}</a>
+        <a href="{{ "tags/" | relURL }}">全部主题 {{ partial "icon.html" "arrow-up-right" }}</a>
       </div>
     </div>
 
